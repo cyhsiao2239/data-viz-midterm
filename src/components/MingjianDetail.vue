@@ -33,6 +33,16 @@ onMounted(async () => {
 <template>
   <section class="detail-content">
     <h2 class="section-title">3. 深入名間：茶鄉的日常與生態</h2>
+
+    <div class="card">
+      <h3>📊 為什麼是名間鄉？南投產量大解密</h3>
+      <p class="analysis-text">
+        當我們將目光聚焦到南投縣內部，會發現驚人的事實：名間鄉的茶葉產量（4,772,218公斤）佔了整個南投縣過半的比例。這片土地不僅是全台最大的茶區，也因此面臨著最嚴峻的環境承載壓力。
+      </p>
+      <div class="image-frame">
+        <img src="../assets/nantou-tea.jpg" alt="南投鄉鎮茶葉產量比較" class="static-img" />
+      </div>
+    </div>
     
     <div class="card">
       <h3>🌱 在地作物分布與農業現況</h3>
@@ -111,5 +121,21 @@ onMounted(async () => {
   border: 1px solid #e8f5e9;
   border-radius: 8px;
   overflow: hidden;
+}
+
+.image-frame {
+  margin-top: 20px;
+  text-align: center;
+  background: #f9fbf9;
+  border: 1px solid #e8f5e9;
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.static-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 </style>

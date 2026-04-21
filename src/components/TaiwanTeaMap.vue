@@ -22,9 +22,22 @@ onMounted(async () => {
 })
 </script>
 
+
+
+
 <template>
   <section class="map-content">
     <h2 class="section-title">2. 全台茶金地圖：產業分佈與外銷趨勢</h2>
+
+    <div class="card">
+      <h3>🗺️ 2024年 全台茶葉產量分布</h3>
+      <p class="analysis-text">
+        從最新的數據可以看出，台灣茶葉的生產重鎮高度集中於中部地區，其中又以南投縣（8,859噸）位居全台之冠，遠超其他縣市。
+      </p>
+      <div class="image-frame">
+        <img src="../assets/taiwan-tea.jpg" alt="全台茶葉產量" class="static-img" />
+      </div>
+    </div>
     
     <div class="card">
       <h3>🍵 台灣茶葉產值與經濟版圖</h3>
@@ -73,5 +86,21 @@ onMounted(async () => {
   border: 1px solid #e8f5e9;
   border-radius: 8px;
   overflow: hidden;
+}
+
+.image-frame {
+  margin-top: 20px;
+  text-align: center;
+  background: #f9fbf9;
+  border: 1px solid #e8f5e9;
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.static-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 </style>
