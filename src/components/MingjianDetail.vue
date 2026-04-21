@@ -2,80 +2,96 @@
 import { onMounted, nextTick } from 'vue'
 
 onMounted(async () => {
-  // 等待 Vue 把 HTML 畫面都畫好
   await nextTick()
   
-  const vizId = 'viz1776605394652'; 
-  const divElement = document.getElementById(vizId);
-  
-  // 加上保護機制：如果真的有找到這個 div，才執行 Tableau 的載入
-  if (divElement) {
-    const vizElement = divElement.getElementsByTagName('object')[0];
-    
-    // 設定寬度與高度
-    vizElement.style.width = '100%';
-    vizElement.style.height = '800px';
-    
-    // 載入 Tableau 腳本
-    const scriptElement = document.createElement('script');
-    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
-    vizElement.parentNode.insertBefore(scriptElement, vizElement);
-  } else {
-    console.error('找不到 Tableau 的容器，請檢查 ID 是否正確。');
+  // --- 1. 載入：作物分布圖 ---
+  const vizIdCrop = 'viz1776754244938'; 
+  const divCrop = document.getElementById(vizIdCrop);
+  if (divCrop) {
+    const vizCrop = divCrop.getElementsByTagName('object')[0];
+    vizCrop.style.width = '100%';
+    vizCrop.style.height = '650px';
+    const script1 = document.createElement('script');
+    script1.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+    vizCrop.parentNode.insertBefore(script1, vizCrop);
+  }
+
+  // --- 2. 載入：物種棲地圖 ---
+  const vizIdSpecies = 'viz1776754310008'; 
+  const divSpecies = document.getElementById(vizIdSpecies);
+  if (divSpecies) {
+    const vizSpecies = divSpecies.getElementsByTagName('object')[0];
+    vizSpecies.style.width = '100%';
+    vizSpecies.style.height = '650px';
+    const script2 = document.createElement('script');
+    script2.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+    vizSpecies.parentNode.insertBefore(script2, vizSpecies);
   }
 })
 </script>
 
 <template>
   <section class="detail-content">
-    <h2 class="section-title">3. 深入名間：茶鄉的日常與挑戰</h2>
+    <h2 class="section-title">3. 深入名間：茶鄉的日常與生態</h2>
     
     <div class="card">
-      <h3>💰 種植面積與成本收益</h3>
+      <h3>🌱 在地作物分布與農業現況</h3>
       <p class="analysis-text">
-        名間鄉是全台灣茶葉產量最高的地區之一。在這裡，我們透過數據分析茶農的投入成本與實際營收，探討在環境威脅下，在地產業的經濟韌性。
-        <br><span style="color: #ff9800; font-size: 0.9em;">（備註：下方目前為版面測試用之暫存儀表板，待團隊成員完成專屬圖表後替換）</span>
+        名間鄉作為重要的農業基地，土地的使用與作物分布直接反映了在地的經濟命脈。透過同學製作的作物分布圖，我們可以清楚看見這片土地的農業結構。
       </p>
       
       <div class="tableau-frame">
-        <div class='tableauPlaceholder' id='viz1776605394652' style='position: relative'>
+        <div class='tableauPlaceholder' id='viz1776754244938' style='position: relative'>
           <noscript>
             <a href='#'>
-              <img alt='2582 ' src='https://public.tableau.com/static/images/Z8/Z8R3R52ZS/1_rss.png' style='border: none' />
+              <img alt=' ' src='https://public.tableau.com/static/images/3_/3_17767402991290/113/1_rss.png' style='border: none' />
             </a>
           </noscript>
           <object class='tableauViz' style='display:none;'>
             <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
             <param name='embed_code_version' value='3' /> 
-            <param name='path' value='shared/Z8R3R52ZS' /> 
+            <param name='site_root' value='' />
+            <param name='name' value='3_17767402991290/113' />
+            <param name='tabs' value='yes' />
             <param name='toolbar' value='yes' />
-            <param name='static_image' value='https://public.tableau.com/static/images/Z8/Z8R3R52ZS/1.png' /> 
+            <param name='static_image' value='https://public.tableau.com/static/images/3_/3_17767402991290/113/1.png' /> 
             <param name='animate_transition' value='yes' />
             <param name='display_static_image' value='yes' />
             <param name='display_spinner' value='yes' />
             <param name='display_overlay' value='yes' />
             <param name='display_count' value='yes' />
-            <param name='language' value='en-US' />
+            <param name='language' value='zh-TW' />
           </object>
         </div>
       </div>
     </div>
 
     <div class="card">
-      <h3>🐾 土地的守護者：物種紀錄</h3>
+      <h3>🐾 土地的守護者：物種棲地紀錄</h3>
       <p class="analysis-text">
-        茶園不僅是農田，也是許多在地生物的棲息地。透過物種紀錄的調查，我們能更全面地理解環境風險對生物多樣性的影響。
+        農田不僅是經濟來源，也是許多生物的家。當我們在探討環境威脅時，了解原本棲息在此的物種分佈，能幫助我們更全面地評估開發帶來的生態衝擊。
       </p>
-      <div class="species-grid">
-        <div class="species-item">
-          <div class="species-icon">🌿</div>
-          <h4>在地原生種</h4>
-          <p>觀察紀錄待補...</p>
-        </div>
-        <div class="species-item">
-          <div class="species-icon">🐜</div>
-          <h4>生態指標</h4>
-          <p>環境品質回饋待補...</p>
+      
+      <div class="tableau-frame">
+        <div class='tableauPlaceholder' id='viz1776754310008' style='position: relative'>
+          <noscript>
+            <a href='#'>
+              <img alt=' ' src='https://public.tableau.com/static/images/W8/W8QJ4YXPQ/1_rss.png' style='border: none' />
+            </a>
+          </noscript>
+          <object class='tableauViz' style='display:none;'>
+            <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+            <param name='embed_code_version' value='3' /> 
+            <param name='path' value='shared/W8QJ4YXPQ' /> 
+            <param name='toolbar' value='yes' />
+            <param name='static_image' value='https://public.tableau.com/static/images/W8/W8QJ4YXPQ/1.png' /> 
+            <param name='animate_transition' value='yes' />
+            <param name='display_static_image' value='yes' />
+            <param name='display_spinner' value='yes' />
+            <param name='display_overlay' value='yes' />
+            <param name='display_count' value='yes' />
+            <param name='language' value='zh-TW' />
+          </object>
         </div>
       </div>
     </div>
@@ -95,25 +111,5 @@ onMounted(async () => {
   border: 1px solid #e8f5e9;
   border-radius: 8px;
   overflow: hidden;
-}
-
-.species-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin-top: 20px;
-}
-
-.species-item {
-  background: #f1f8e9;
-  padding: 20px;
-  border-radius: 8px;
-  text-align: center;
-  border: 1px solid #e8f5e9;
-}
-
-.species-icon {
-  font-size: 2rem;
-  margin-bottom: 10px;
 }
 </style>
